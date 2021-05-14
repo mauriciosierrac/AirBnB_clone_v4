@@ -11,15 +11,10 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-  const url = 'http://0.0.0.0:5001/api/v1/status/';
+  const url = 'http://'+ window.location.hostname +':5001/api/v1/status/';
   $.get(url, function (textStatus) {
-    alert(textStatus)
-    if (textStatus === 'OK') {
-      console.log('status: ok')
-      alert('si hay conexion')
+    if (textStatus.status === 'OK') {
       $('DIV#api_status').addClass('available')
-    } else {
-      alert('no conexion')
     }
   })
 })
