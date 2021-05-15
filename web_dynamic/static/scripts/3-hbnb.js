@@ -20,12 +20,15 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-  const url = 'http://' + window.location.hostname + ':5001/api/v1/places_search/';
-  $.post(url, function (data, textStatus) {
-    if (textStatus.status === 'success') {
-      console.log(data);
+  const url_ = 'http://' + window.location.hostname + ':5001/api/v1/places_search/';
+  $.ajax({
+    type: 'POST',
+    url: url_,
+    data: '{}',
+    dataType: 'JSON',
+    contentType: 'application/json',
+    success: (data) => {
       data.forEach((place) => {
-        console.log(place);
         const template = `<article>
                               <div class="title_box">
                                 <h2>${place.name}</h2>
