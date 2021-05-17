@@ -51,12 +51,12 @@ $(document).ready(function () {
 $(document).ready(function () {
   $('button').click(function () {
     const url_ = 'http://' + window.location.hostname + ':5001/api/v1/places_search/';
-    const tojson = JSON.stringify(Object.keys(amenityList));
+    const tojson = JSON.stringify({ amenities: Object.keys(amenityList) });
     console.log(tojson);
     $.ajax({
       type: 'POST',
       url: url_,
-      data: 'tojson',
+      data: tojson,
       dataType: 'json',
       contentType: 'application/json',
       success: (data) => {
